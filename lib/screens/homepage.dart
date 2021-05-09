@@ -7,10 +7,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Colors.lightGreen,
         child: Row(
-          children: [
+          children: <Widget>[
             Column(
-              children: [
+              children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
@@ -19,12 +20,14 @@ class HomeScreen extends StatelessWidget {
                     ),
                     color: Colors.red,
                   ),
-                  padding: EdgeInsets.fromLTRB(170, 30, 170, 30),
+                  padding: EdgeInsets.fromLTRB(165, 35, 165, 35),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ClipOval(
-                        child: Image.asset('assets/dumbel.png', width: 70, height: 70, fit: BoxFit.cover),
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      CircleAvatar(
+                        backgroundImage: AssetImage('assets/dumbel.png'),
+                        radius: 40,
                       ),
                     ],
                   ),
