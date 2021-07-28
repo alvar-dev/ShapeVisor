@@ -28,6 +28,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,8 @@ flutter:
   assets:
     - assets/dumbel.png
     - assets/ShapeVisor.png
+    - assets/elon.jpg
+    - assets/kuva1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -61,12 +64,11 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Gothic
-      fonts:
-        - asset: assets/fonts/Gothic-regular.ttf
-        - weight: 400
-        - asset: assets/fonts/Gothic-bold.ttf
-        - weight: 900
+   - family: Gothic
+     fonts:
+       #- asset: assets/fonts/Gothic-regular.ttf
+       - asset: assets/fonts/Gothic-bold.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
