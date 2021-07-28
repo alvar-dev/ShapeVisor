@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shapevisor/constants.dart';
+import 'package:shapevisor/models/treenit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightGreen,
+        color: Colors.grey[300],
         child: Row(
           children: <Widget>[
             Column(
@@ -15,43 +16,97 @@ class HomeScreen extends StatelessWidget {
                 Stack(
                   children: <Widget>[
                     Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40.0),
-                        ),
-                        color: Colors.blue,
-                      ),
-                      //padding: EdgeInsets.fromLTRB(205.5, 70, 205.5, 70),
-                      height: 200,
+                      height: 270,
                       width: 411.4,
+                      //color: Colors.blue,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          // padding: EdgeInsets.only(left: 16, right: 6),
+                          itemCount: cards.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: (){
+                                      print('Nyt toimii');
+                                    },
+                                    child: Container(
+                                      height: 100,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        //color: Color(cards[index].cardintausta),
+                                        color: Colors.grey[300],
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey[500],
+                                            offset: Offset(4, 4),
+                                            blurRadius: 15,
+                                            spreadRadius: 1.0,
+                                          ),
+                                          BoxShadow(
+                                            color: Colors.white,
+                                            offset: Offset(-4, -4),
+                                            blurRadius: 15  ,
+                                            spreadRadius: 1.0,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 15),
+                                            child: Text(cards[index].viikonpv, style: TextStyle(fontSize: 15,  color: Color(0xff303030), fontFamily: 'Gothic')),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                ],
+                              ),
+                            );
+                          }),
                     ),
                     Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(40.0),
-                        ),
-                        color: Colors.red,
-                      ),
-                      //padding: EdgeInsets.fromLTRB(165, 0, 165, 0),
-                      height: 120,
+                      height: 70,
                       width: 411.4,
-
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                          SizedBox(width: 50),
+                          Text('ShapeVisor', style: TextStyle(
+                            fontSize: 55,
+                            fontFamily: 'Gothic',
+                            color: Color(0xff303030),
+                          ),),
+                          SizedBox(
+                            width: 25,
+                          ),
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/dumbel.png'),
-                            radius: 40,
+                            backgroundImage: AssetImage('assets/elon.jpg'),
+                            radius: 20,
                           ),
                           SizedBox(width: 10),
                         ],
                       ),
                     ),
                   ],
+                ),
+                SizedBox(height: 357),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: kBottomNavigationBarHeight,
+                  child: Scaffold(
+                    body: Navbar(),
+                  ),
                 ),
               ],
             ),
@@ -61,3 +116,34 @@ class HomeScreen extends StatelessWidget {
     );
 }
 }
+
+class Navbar extends StatefulWidget {
+  @override
+  _NavbarState createState() => _NavbarState();
+}
+
+class _NavbarState extends State<Navbar> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // this will be set when a new tab is tapped
+        items: [
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.home),
+            title: new Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: new Icon(Icons.mail),
+            title: new Text('Messages'),
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              title: Text('Profile')
+          )
+        ],
+      ),
+    );
+  }
+}
+
